@@ -5,7 +5,10 @@ const eta = new Eta({ views: `${Deno.cwd()}/templates/` });
 
 const app = new Hono();
 
-app.get("/", (c) => c.html(eta.render("index.eta")));
+app.get("/", (c) => {
+  return c.html(eta.render("index.eta"));
+});
+
 app.post("/", async (c) => {
   const body = await c.req.parseBody(); // Parse form data
   const name = body.name || "Unknown";  // Handle missing fields
