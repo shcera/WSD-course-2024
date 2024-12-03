@@ -6,7 +6,7 @@ const eta = new Eta({ views: `${Deno.cwd()}/templates/` });
 const app = new Hono();
 
 app.get("/", (c) => c.html(eta.render("index.eta")));
-app.post("/addresses", async (c) => {
+app.post("/addresses", (c) => {
   const body = await c.req.parseBody();
   const nimi = console.log(`Name: ${body.name}`);
   const osoite = console.log(`Address: ${body.address}`)
