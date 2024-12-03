@@ -4,7 +4,7 @@
     <title>Hello forms!</title>
   </head>
   <body>
-    <form method="POST" action="/addresses">
+    <form method="POST" action="/">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" /><br/>
       <label for="address">Address:</label>
