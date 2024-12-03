@@ -10,7 +10,7 @@ app.post("/addresses", async (c) => {
   const body = await c.req.parseBody();
   const nimi = console.log(`Name: ${body.name}`);
   const osoite = console.log(`Address: ${body.address}`)
-  return c.text(`${name} lives at ${osoite}.`);
+  return c.text(`${nimi} lives at ${osoite}.`);
 });
 
 Deno.serve(app.fetch);
