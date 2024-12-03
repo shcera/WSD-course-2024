@@ -6,11 +6,12 @@ const eta = new Eta({ views: `${Deno.cwd()}/templates/` });
 const app = new Hono();
 
 app.get("/", (c) => c.html(eta.render("index.eta")));
-app.post("/addresses", (c) => {
-  const body = await c.req.parseBody();
-  const nimi = console.log(`Name: ${body.name}`);
-  const osoite = console.log(`Address: ${body.address}`)
-  return c.text(`${nimi} lives at ${osoite}.`);
+app.post("/addresses", async (c) => {
+  const body = await c.req.parseBody(); // Parse form data
+  const name = body.name || "Unknown";  // Handle missing fields
+  const address = body.address || "Unknown";
+  
+  return c.text(`${name} lives at ${address}.`);
 });
 
 Deno.serve(app.fetch);
